@@ -29,6 +29,8 @@ jobs:
       - name: validate website
         run: |
           test -f index.html
+          test -f css/style.css
+          test -f js/script.js
           echo "validation successful"
       
       - name: deploy website to EC2
@@ -40,3 +42,4 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           source: "."
           target: "/var/www/html"
+          overwrite: true
